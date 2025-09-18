@@ -1,0 +1,226 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Travel Website Design System - Clean, modern travel/immigration focused design */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 217 10% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 217 10% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 217 10% 15%;
+
+    /* Primary: Professional blue */
+    --primary: 225 87% 33%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 225 87% 28%;
+
+    /* Secondary: Clean grays */
+    --secondary: 210 20% 98%;
+    --secondary-foreground: 217 10% 25%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 217 10% 45%;
+
+    --accent: 225 87% 33%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 225 87% 33%;
+
+    --radius: 0.75rem;
+
+    /* Legal-specific design tokens */
+    --hero-gradient: linear-gradient(135deg, hsl(225 87% 33%) 0%, hsl(225 87% 28%) 100%);
+    --section-bg: 210 20% 98%;
+    --text-primary: 217 10% 15%;
+    --text-secondary: 217 10% 45%;
+    --shadow-card: 0px 4px 24px -8px hsl(217 10% 15% / 0.12);
+    --shadow-button: 0px 2px 8px -2px hsl(225 87% 33% / 0.3);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 217 10% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 217 10% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 217 10% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 225 87% 33%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 225 87% 28%;
+
+    --secondary: 217 10% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 10% 15%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 225 87% 33%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 10% 20%;
+    --input: 217 10% 20%;
+    --ring: 225 87% 33%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-foreground font-semibold leading-tight;
+  }
+
+  p {
+    @apply text-muted-foreground leading-relaxed;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary-hover));
+  }
+}
+
+@layer components {
+  /* Card component variants */
+  .card-travel {
+    @apply bg-card rounded-xl border border-border/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10;
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-destination {
+    @apply bg-card rounded-2xl border border-border/50 p-6 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg;
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Button variants */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-6 py-3 rounded-xl font-medium transition-all duration-200 hover:scale-105 active:scale-95;
+    box-shadow: var(--shadow-button);
+  }
+  
+  .btn-primary:hover {
+    background: hsl(var(--primary-hover));
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 py-3 rounded-xl font-medium transition-all duration-200;
+  }
+
+  /* Section layouts */
+  .section-padding {
+    @apply py-16 px-6 lg:px-8;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+
+  /* Animation keyframes */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Animation utilities */
+  .animate-fadeInUp {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .animate-scaleIn {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  /* Twinkle animation for glittering dots */
+  @keyframes twinkle {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+
+  /* Placeholder image styling */
+  .img-placeholder {
+    @apply bg-muted rounded-lg flex items-center justify-center text-muted-foreground;
+  }
+}
