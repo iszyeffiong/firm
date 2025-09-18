@@ -70,7 +70,7 @@ const attorneyMembers: TeamMember[] = [
     name: "Farida Oluwadamilola Olagunju, Esq",
     role: "Associate Counsel",
     image: "https://images.unsplash.com/photo-1516825513084-7a3397fcd108?w=400&h=500&fit=crop",
-    bio: "Dedicated legal professional with growing expertise in various areas of law. Member of the Nigerian Bar Association. Currently developing specialization in corporate and commercial law matters.",
+    bio: "Rising legal talent with focused expertise in corporate and commercial matters. LL.B., University of Lagos (2015); BL, Nigerian Law School (2016); LLM, Ahmadu Bello University (2019). Started career with Adekunle Adebayo & Co. before joining family practice. Actively involved in pro bono work for women's rights organizations. Member of Nigerian Bar Association, Young Lawyers Forum, and International Association of Young Lawyers. Specializes in Corporate & Commercial Law, Contract Drafting, Intellectual Property, and Family Law. Known for attention to detail, client-focused approach, and innovative legal solutions.",
     linkedin: "https://linkedin.com/in/farida-olagunju"
   }
 ];
