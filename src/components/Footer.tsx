@@ -12,9 +12,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">A</span>
-              </div>
+              <img src="/Logo.svg" alt="Abike Chambers Logo" className="w-14 h-14 object-contain" />
               <span className="font-bold text-xl">ABIKE CHAMBERS</span>
             </div>
             <p className="text-background/70 leading-relaxed">

@@ -5,9 +5,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">A</span>
-            </div>
+            <img src="/Logo.svg" alt="Abike Chambers Logo" className="w-14 h-14 object-contain" />
             <span className="font-bold text-xl text-foreground">ABIKE CHAMBERS</span>
           </div>
 
