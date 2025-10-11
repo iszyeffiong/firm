@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import ContactModal from './ContactModal';
+
 const services = [
   {
     title: "Corporate Advisory & Transactions",
@@ -38,6 +41,11 @@ const services = [
 ];
 
 const ServicesSection = () => {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  const openContactModal = () => setIsContactModalOpen(true);
+  const closeContactModal = () => setIsContactModalOpen(false);
+
   return (
     <section id="services" className="section-padding bg-secondary/50">
       <div className="container-custom">
@@ -76,14 +84,19 @@ const ServicesSection = () => {
               </div>
               
               <div className="mt-6 pt-6 border-t border-border/50">
-                <div className="text-primary font-medium group-hover:text-primary-hover transition-colors cursor-pointer">
-                  Learn More →
+                <div 
+                  className="text-primary font-medium group-hover:text-primary-hover transition-colors cursor-pointer"
+                  onClick={openContactModal}
+                >
+                  Talk to Our Attorneys →
                 </div>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      <ContactModal isOpen={isContactModalOpen} onClose={closeContactModal} />
     </section>
   );
 };
