@@ -14,7 +14,15 @@ const testimonials = [{
   position: "Client",
   avatar: "👩‍💼"
 }];
+import { useState } from 'react';
+import ContactModal from './ContactModal';
+
 const TestimonialsSection = () => {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  const openContactModal = () => setIsContactModalOpen(true);
+  const closeContactModal = () => setIsContactModalOpen(false);
+
   return <section className="section-padding">
       <div className="container-custom">
         <div className="text-center mb-16">
@@ -61,12 +69,14 @@ const TestimonialsSection = () => {
               Schedule a free consultation to discuss your legal needs with our experienced team.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="btn-primary">Consultation</button>
+              <button className="btn-primary" onClick={openContactModal}>Consultation</button>
               <button className="btn-outline">Call +234 806 073 9223</button>
             </div>
           </div>
         </div>
       </div>
+
+      <ContactModal isOpen={isContactModalOpen} onClose={closeContactModal} />
     </section>;
 };
 export default TestimonialsSection;

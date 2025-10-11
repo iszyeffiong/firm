@@ -62,17 +62,12 @@ const Footer = () => {
                 <div>info@abikechambersng.com</div>
               </div>
               <div className="text-background/70">
-                <div className="font-medium">Phone</div>
-                <div>+234 706 564 6370</div>
+                <div className="font-medium">Mobile Number</div>
                 <div>+234 806 073 9223</div>
               </div>
               <div className="text-background/70">
                 <div className="font-medium">Head Office</div>
                 <div>No. 3 Aperin Street,<br />Off Awolowo Junction,<br />Old Bodija, Ibadan, Nigeria</div>
-              </div>
-              <div className="text-background/70">
-                <div className="font-medium">Lagos Office</div>
-                <div>C/O Motolani Akinlusi & Co.<br />66 Campbell Street,<br />Lagos, Nigeria</div>
               </div>
             </div>
           </div>

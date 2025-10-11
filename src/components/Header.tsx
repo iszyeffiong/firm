@@ -1,5 +1,12 @@
 import { Button } from "@/components/ui/button";
+import { useState } from 'react';
+import ContactModal from './ContactModal';
+
 const Header = () => {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  const openContactModal = () => setIsContactModalOpen(true);
+  const closeContactModal = () => setIsContactModalOpen(false);
   return <header className="bg-white border-b border-border/50 sticky top-0 z-50">
       <div className="container-custom">
         <div className="flex items-center justify-between h-16">
@@ -19,7 +26,7 @@ const Header = () => {
           </nav>
 
           {/* CTA Button */}
-          <Button className="btn-primary hidden md:block">Consultation</Button>
+          <Button className="btn-primary hidden md:block" onClick={openContactModal}>Consultation</Button>
 
           {/* Mobile menu button */}
           <button className="md:hidden p-2">
@@ -29,6 +36,8 @@ const Header = () => {
           </button>
         </div>
       </div>
+
+      <ContactModal isOpen={isContactModalOpen} onClose={closeContactModal} />
     </header>;
 };
 export default Header;

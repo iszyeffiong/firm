@@ -29,8 +29,7 @@ const ContactSection = () => {
                   <span className="text-xl">📞</span>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-foreground mb-1">Phone</h4>
-                  <p className="text-muted-foreground">+234 706 564 6370</p>
+                  <h4 className="font-semibold text-foreground mb-1">Mobile Number</h4>
                   <p className="text-muted-foreground">+234 806 073 9223</p>
                   <p className="text-sm text-muted-foreground">Available for legal consultations</p>
                 </div>
@@ -54,11 +53,12 @@ const ContactSection = () => {
                   <span className="text-xl">📍</span>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-foreground mb-1">Head Office (Ibadan)</h4>
+                  <h4 className="font-semibold text-foreground mb-1">Head Office</h4>
                   <p className="text-muted-foreground">
                     No. 3 Aperin Street,<br />
                     Off Awolowo Junction,<br />
-                    Old Bodija, Ibadan, Nigeria
+                    Old Bodija, Ibadan.<br />
+                    Nigeria.
                   </p>
                 </div>
               </div>
@@ -71,9 +71,24 @@ const ContactSection = () => {
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Lagos Office</h4>
                   <p className="text-muted-foreground">
-                    C/O Motolani Akinlusi & Co.<br />
+                    C/O Motolani Akinlusi & Co<br />
                     66 Campbell Street,<br />
-                    Lagos, Nigeria
+                    Lagos, Nigeria.
+                  </p>
+                </div>
+              </div>
+
+              {/* Abuja Office */}
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl">🏛️</span>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground mb-1">Abuja Office</h4>
+                  <p className="text-muted-foreground">
+                    C/O Akinboro & Co<br />
+                    32, Minna Street Garki,<br />
+                    Abuja, Nigeria.
                   </p>
                 </div>
               </div>
@@ -86,10 +101,10 @@ const ContactSection = () => {
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Postal Address</h4>
                   <p className="text-muted-foreground">
-                    P.O. Box 3081,<br />
-                    Mapo Post Office,<br />
-                    Post Code 200001,<br />
-                    Ibadan, Nigeria
+                    P.O Box 3081,<br />
+                    Mapo Post Office.<br />
+                    Post Code 20001,<br />
+                    Ibadan, Nigeria.
                   </p>
                 </div>
               </div>
@@ -107,14 +122,6 @@ const ContactSection = () => {
                     <p>Sunday: By appointment only</p>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            {/* Map Placeholder */}
-            <div className="mt-8">
-              <div className="img-placeholder aspect-video w-full bg-muted/50 rounded-xl">
-                <span className="text-4xl">🗺️</span>
-                <p className="text-sm text-muted-foreground mt-2">Interactive Map</p>
               </div>
             </div>
           </div>

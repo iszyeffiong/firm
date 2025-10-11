@@ -14,10 +14,13 @@ const AboutSection = () => {
             </h2>
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
-                Founded in 1995 by Isiaka Abiola Olagunju, SAN, Abike Chambers has grown into one of Nigeria's most reputable law firms with offices in Ibadan and Lagos. For nearly three decades, we have provided trusted legal services to individuals, corporations, financial institutions, and government bodies.
+                Abike Chambers was founded on July 17, 1995, by Isiaka Abiola Olagunju, SAN, and has since grown into one of Nigeria's most reputable law firms, with offices in Ibadan and Lagos. The firm was formally incorporated on December 4, 1997 (RC: IBZ RCI 3203259). In 2004, it entered into a strategic partnership with the Lagos-based firm of Motolani Akinlusi & Co.
               </p>
               <p>
-                Our firm is built on integrity, professionalism, and excellence. We pride ourselves not just on our legal expertise, but also on building strong client relationships. With a team of seasoned lawyers and consultants, Abike Chambers combines deep legal knowledge with practical solutions to help clients achieve their goals.
+                For nearly three decades, Abike Chambers has delivered trusted legal services to individuals, corporations, financial institutions, and government agencies, both domestic and international.
+              </p>
+              <p>
+                Built on the core values of integrity, professionalism, and excellence, the firm combines deep legal knowledge with practical solutions to help clients achieve their goals. Our team of experienced lawyers and consultants is committed to building strong, long-term client relationships. We pride ourselves on being both highly skilled and highly approachable.
               </p>
             </div>
 
@@ -73,8 +76,29 @@ const AboutSection = () => {
             </div>
           </div>
 
-          {/* Right Content - Law Office Image */}
+          {/* Right Content - Vision & Mission + Law Office Image */}
           <div className="relative">
+            {/* Vision & Mission */}
+            <div className="mb-8 space-y-8">
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">
+                  <span className="text-primary">Vision:</span>
+                </h3>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  To create an internationally acclaimed Nigeria's leading law firm, providing world class service to our clients.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">
+                  <span className="text-primary">Mission:</span>
+                </h3>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  To uphold the highest ethical standard in the practice of Law.
+                </p>
+              </div>
+            </div>
+
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
               <img 
                 src={legalExpertiseTeam} 

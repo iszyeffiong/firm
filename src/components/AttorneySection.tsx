@@ -1,10 +1,12 @@
 import { TeamCarousel, TeamMember } from './TeamCarousel';
+import { useState } from 'react';
+import ContactModal from './ContactModal';
 
 const attorneyMembers: TeamMember[] = [
   {
     id: "isiaka-olagunju",
     name: "Isiaka Abiola Olagunju, SAN",
-    role: "Founder and Principal Partner",
+    role: "Principal Partner",
     image: "https://images.unsplash.com/photo-1516825513084-7a3397fcd108?w=400&h=500&fit=crop",
     bio: "25+ years of distinguished practice. LL.B., University of Lagos (1992); BL, Nigerian Law School (1993). Former General Secretary of the Nigerian Bar Association (2016–2018) and Chairman of Oyo State Independent Electoral Commission. Called to the Inner Bar as Senior Advocate of Nigeria (SAN) in 2020. Specializes in Commercial Litigation, Labour Law, Arbitration, Mediation, Electoral Matters, and Regulatory Compliance. Widely recognized in the legal community and frequently invited to advise on complex legal and policy issues.",
     linkedin: "https://linkedin.com/in/isiaka-olagunju-san"
@@ -20,7 +22,7 @@ const attorneyMembers: TeamMember[] = [
   {
     id: "olajumoke-oladejo",
     name: "Olajumoke Oladejo, Esq",
-    role: "Managing Partner and Head of Chambers",
+    role: "Head of Chambers",
     image: "https://images.unsplash.com/photo-1516825513084-7a3397fcd108?w=400&h=500&fit=crop",
     bio: "Over a decade of professional experience. LL.B., Obafemi Awolowo University (2010); BL, Nigerian Law School (2012); LLM, University of Ibadan. Formerly practiced with Olayinka Bolanle & Co. and Tafa Ahmed & Co. Advocate for family law, children's rights, and women's rights. Accredited agent of the Corporate Affairs Commission, handling pre- and post-incorporation matters. Specializes in Civil Litigation, Corporate Practice, Family Law, Property and Conveyancing, Arbitration, and Mediation. Recognized as a dynamic and results-oriented litigator.",
     linkedin: "https://linkedin.com/in/olajumoke-oladejo"
@@ -28,47 +30,47 @@ const attorneyMembers: TeamMember[] = [
   {
     id: "ishola-ramoni",
     name: "Ishola Ramoni, Esq",
-    role: "Partner and Head of Litigation",
+    role: "Associate",
     image: "https://images.unsplash.com/photo-1516825513084-7a3397fcd108?w=400&h=500&fit=crop",
     bio: "Over a decade of hands-on experience. LL.B., Olabisi Onabanjo University (2008); BL, Nigerian Law School (2011); LLM, Obafemi Awolowo University (2014). Began practice with Kola Olayiwola & Co. before joining Abike Chambers in 2012. Oversees litigation strategy and case monitoring across jurisdictions. Member of the Nigerian Bar Association and Commonwealth Lawyers Association. Specializes in Litigation, Brief Writing, Property & Conveyancing, Insolvency, and General Solicitors' Work. Known for competence, passion for litigation, and effective advocacy.",
     linkedin: "https://linkedin.com/in/ishola-ramoni"
   },
   {
     id: "surajudeen-ali-musa",
-    name: "Surajudeen Ali-Musa, Esq",
-    role: "Partner",
+    name: "Suraj Ali-Musa, Esq",
+    role: "Associate",
     image: "https://images.unsplash.com/photo-1516825513084-7a3397fcd108?w=400&h=500&fit=crop",
     bio: "10+ years of legal experience. LL.B., Ahmadu Bello University Zaria; BL, Nigerian Law School (2011). Joined Abike Chambers in 2012, building expertise in Corporate, Commercial, Property, and Criminal Law. Member of the Nigerian Bar Association and International Bar Association. Has handled extensive litigation, advisory, and corporate matters with remarkable results. Specializes in Litigation, Corporate & Commercial Law, Property & Conveyancing, Criminal Law, and General Solicitors' Work. Recognized for his diligence, ability to manage complex legal issues, and consistent courtroom success.",
     linkedin: "https://linkedin.com/in/surajudeen-ali-musa"
   },
   {
     id: "olagunju-lethf",
-    name: "Olagunju Lethf Aderemi, Esq",
-    role: "Partner",
+    name: "Aderemi Olagunju, Esq",
+    role: "Associate",
     image: "https://images.unsplash.com/photo-1516825513084-7a3397fcd108?w=400&h=500&fit=crop",
     bio: "Over 30 years of legal and judicial experience. Began career at the Court of Appeal in 1982 and served until retirement in 2016. Diploma in Law, Kwara State Polytechnic (2001); LL.B., University of Ilorin (2005); BL, Nigerian Law School (2007). Has served as Secretary to multiple Election Petition Tribunals across states. Member of Nigerian Bar Association, International Bar Association, Muslim Lawyers Association, Rotary International, and others. Specializes in Litigation, Property, and Conveyancing. Brings judicial insight and extensive case management experience to the firm.",
     linkedin: "https://linkedin.com/in/olagunju-aderemi"
   },
   {
-    id: "taiwo-oyewole",
-    name: "Taiwo Bisola Oyewole, Esq",
-    role: "Counsel",
+    id: "taiwo-ayankoso",
+    name: "Taiwo Abisola Ayankoso",
+    role: "Associate",
     image: "https://images.unsplash.com/photo-1516825513084-7a3397fcd108?w=400&h=500&fit=crop",
-    bio: "Strong academic and professional grounding. LL.B., University of Abuja (2018); BL, Nigerian Law School (2019); LLM (in view), University of Ibadan. Began legal career during NYSC at Maritus Legal Consult, prosecuting criminal matters and drafting processes. Further practice with Enos Jacob & Co. (Vine Chamber), handling ADR, Corporate, Property, and Conveyancing. Member of Nigerian Bar Association, Christian Lawyers Fellowship of Nigeria, and Nigerian Institute of Management (Chartered). Specializes in Debt Recovery, Corporate Law, Litigation, and Property & Conveyancing. Known for reliability, creativity, and professional diligence.",
-    linkedin: "https://linkedin.com/in/taiwo-oyewole"
+    bio: "Taiwo Abisola Ayankoso, Esq is a dynamic legal practitioner with a growing reputation for excellence. LL.B., University of Abuja (2018); B.L., Nigerian Law School, Lagos (2019); LL.M., University of Ibadan. She has developed practical expertise in Litigation, Debt Recovery, Corporate Practice, Property & Conveyancing, and General Solicitors’ Work. A certified member of the Nigerian Institute of Management, she is known for her diligence, legal drafting skills, and commitment to efficient legal service delivery.",
+    linkedin: "https://linkedin.com/in/taiwo-ayankoso"
   },
   {
-    id: "ayotunde-ogundare",
-    name: "Ayotunde Ogundare, Esq",
-    role: "Counsel",
+    id: "joshua-aitagbebhunu",
+    name: "Joshua Aitagbebhunu",
+    role: "Associate",
     image: "https://images.unsplash.com/photo-1516825513084-7a3397fcd108?w=400&h=500&fit=crop",
-    bio: "Unique legal and human resource management expertise. LL.B., University of Ibadan; BL, Nigerian Law School, Yenagoa; M.A., Communication and Language Arts, University of Ibadan; B.A., English, Obafemi Awolowo University. Former Head of Human Resources at Marsh FJC Int'l Insurance Brokers, where she led post-merger restructuring and compliance. Member of Nigerian Bar Association, Chartered Institute of Personnel Management of Nigeria, and Nigerian Institute of Management. Specializes in Litigation, Corporate & Commercial Law, Property & Conveyancing, Labour Law, Insurance Law, and Mediation & Arbitration. Combines legal practice with organizational leadership experience.",
-    linkedin: "https://linkedin.com/in/ayotunde-ogundare"
+    bio: "Called to the Nigerian Bar in 2021. LL.B, Ambrose Alli University (2019). Prior to joining Abike Chambers, he trained at B.A. Joshua & Associates and the Legal Aid Council. His practice areas include Litigation, Corporate Advisory, and Dispute Resolution. Recognized for his analytical skills, professionalism, and client-focused approach.",
+    linkedin: "https://linkedin.com/in/joshua-aitagbebhunu"
   },
   {
     id: "farida-olagunju",
-    name: "Farida Oluwadamilola Olagunju, Esq",
-    role: "Associate Counsel",
+    name: "Faridah Oluwadamilola Olagunju, Esq",
+    role: "Associate",
     image: "https://images.unsplash.com/photo-1516825513084-7a3397fcd108?w=400&h=500&fit=crop",
     bio: "Rising legal talent with focused expertise in corporate and commercial matters. LL.B., University of Lagos (2015); BL, Nigerian Law School (2016); LLM, Ahmadu Bello University (2019). Started career with Adekunle Adebayo & Co. before joining family practice. Actively involved in pro bono work for women's rights organizations. Member of Nigerian Bar Association, Young Lawyers Forum, and International Association of Young Lawyers. Specializes in Corporate & Commercial Law, Contract Drafting, Intellectual Property, and Family Law. Known for attention to detail, client-focused approach, and innovative legal solutions.",
     linkedin: "https://linkedin.com/in/farida-olagunju"
@@ -76,6 +78,11 @@ const attorneyMembers: TeamMember[] = [
 ];
 
 const AttorneySection = () => {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  const openContactModal = () => setIsContactModalOpen(true);
+  const closeContactModal = () => setIsContactModalOpen(false);
+
   return (
     <section id="team" className="section-padding bg-secondary/30">
       <div className="container-custom">
@@ -114,12 +121,14 @@ const AttorneySection = () => {
             <p className="text-muted-foreground mb-6">
               Get personalized legal counsel from attorneys who understand your unique needs and challenges.
             </p>
-            <button className="btn-primary">
+            <button className="btn-primary" onClick={openContactModal}>
               Meet Our Attorneys
             </button>
           </div>
         </div>
       </div>
+
+      <ContactModal isOpen={isContactModalOpen} onClose={closeContactModal} />
     </section>
   );
 };
