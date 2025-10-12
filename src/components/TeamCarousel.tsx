@@ -402,7 +402,7 @@ export const TeamCarousel: React.FC<TeamCarouselProps> = ({
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
 
                   {/* Overlay Info */}
