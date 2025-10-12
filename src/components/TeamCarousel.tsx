@@ -403,6 +403,13 @@ export const TeamCarousel: React.FC<TeamCarouselProps> = ({
                     src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover object-top"
+                    style={{
+                      imageRendering: 'auto',
+                      filter: 'contrast(1.1) saturate(1.1)',
+                      backfaceVisibility: 'hidden',
+                      transform: 'translateZ(0)'
+                    }}
+                    loading="lazy"
                   />
 
                   {/* Overlay Info */}
