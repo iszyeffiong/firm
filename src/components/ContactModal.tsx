@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
+import { useToast } from "./Toast";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -19,6 +20,7 @@ interface FormData {
 }
 
 const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
+  const { showToast } = useToast();
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
@@ -30,7 +32,6 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   if (!isOpen) return null;
 
@@ -54,7 +55,6 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
     }
 
     setIsSubmitting(true);
-    setSubmitStatus('idle');
 
     try {
       // Simulate form submission (replace with actual API call)
@@ -64,33 +64,40 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
       // In a real application, you would send this data to your backend
       console.log('Form submitted:', formData);
       
-      setSubmitStatus('success');
+      // Show success toast
+      showToast("Thank you! Your submission has been received. We'll get back to you shortly. If urgent, please call us at +234-8060739223.", 'success');
       
-      // Reset form after successful submission
-      setTimeout(() => {
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          phone: '',
-          legalMatterType: '',
-          message: '',
-          consent: false
-        });
-        setSubmitStatus('idle');
-        onClose();
-      }, 3000);
+      // Reset form and close modal
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        legalMatterType: '',
+        message: '',
+        consent: false
+      });
+      onClose();
       
     } catch (error) {
       console.error('Submission error:', error);
-      setSubmitStatus('error');
+      showToast("We're sorry, but there was an error sending your message. Please try again or contact us directly at info@abikechambersng.com or +234-8060739223.", 'error');
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+    <div 
+      className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4" 
+      onClick={handleBackdropClick}
+    >
       <div className="bg-background rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div className="p-6">
           {/* Header */}
@@ -107,36 +114,6 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
           <p className="text-muted-foreground mb-8">
             Fill out the form below and we'll get back to you within 24 hours to discuss your legal needs.
           </p>
-
-          {submitStatus === 'success' && (
-            <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
-              <div className="flex items-center space-x-2">
-                <span className="text-green-600 text-xl">✓</span>
-                <div>
-                  <h4 className="font-semibold text-green-800">Message Sent Successfully!</h4>
-                  <p className="text-green-700 text-sm">
-                    Thank you! Your submission has been received. We'll get back to you shortly. If urgent, please call us at +234-8060739223.
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {submitStatus === 'error' && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
-              <div className="flex items-center space-x-2">
-                <span className="text-red-600 text-xl">✗</span>
-                <div>
-                  <h4 className="font-semibold text-red-800">Submission Failed</h4>
-                  <p className="text-red-700 text-sm">
-                    We're sorry, but there was an error sending your message. Please try again or contact us directly at 
-                    <a href="mailto:info@abikechambersng.com" className="underline ml-1">info@abikechambersng.com</a> or 
-                    <a href="tel:+2348060739223" className="underline ml-1">+234 806 073 9223</a>.
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
 
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="grid md:grid-cols-2 gap-4">

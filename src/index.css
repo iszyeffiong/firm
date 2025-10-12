@@ -113,7 +113,12 @@
     @apply bg-background text-foreground font-sans antialiased;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply text-foreground font-semibold leading-tight;
   }
 
@@ -125,22 +130,23 @@
   ::-webkit-scrollbar {
     width: 6px;
   }
-  
+
   ::-webkit-scrollbar-track {
     background: hsl(var(--muted));
   }
-  
+
   ::-webkit-scrollbar-thumb {
     background: hsl(var(--primary));
     border-radius: 3px;
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
     background: hsl(var(--primary-hover));
   }
 }
 
 @layer components {
+
   /* Card component variants */
   .card-travel {
     @apply bg-card rounded-xl border border-border/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10;
@@ -157,7 +163,7 @@
     @apply bg-primary text-primary-foreground px-6 py-3 rounded-xl font-medium transition-all duration-200 hover:scale-105 active:scale-95;
     box-shadow: var(--shadow-button);
   }
-  
+
   .btn-primary:hover {
     background: hsl(var(--primary-hover));
   }
@@ -181,6 +187,7 @@
       opacity: 0;
       transform: translateY(30px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -192,6 +199,7 @@
       opacity: 0;
       transform: scale(0.95);
     }
+
     to {
       opacity: 1;
       transform: scale(1);
@@ -207,12 +215,31 @@
     animation: scaleIn 0.4s ease-out forwards;
   }
 
+  .animate-slide-in-right {
+    animation: slideInRight 0.3s ease-out forwards;
+  }
+
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
   /* Twinkle animation for glittering dots */
   @keyframes twinkle {
-    0%, 100% {
+
+    0%,
+    100% {
       opacity: 0.3;
       transform: scale(1);
     }
+
     50% {
       opacity: 1;
       transform: scale(1.2);

@@ -1,8 +1,36 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useState } from "react";
+import { useToast } from "./Toast";
 
 const ContactSection = () => {
+  const { showToast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    setIsSubmitting(true);
+
+    try {
+      // Simulate form submission (replace with actual API call)
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // Show success toast
+      showToast("Thank you! Your submission has been received. We'll get back to you shortly. If urgent, please call us at +234-8060739223.", 'success');
+      
+      // Reset form
+      (e.target as HTMLFormElement).reset();
+      
+    } catch (error) {
+      console.error('Submission error:', error);
+      showToast("We're sorry, but there was an error sending your message. Please try again or contact us directly at info@abikechambersng.com or +234-8060739223.", 'error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="section-padding bg-muted/20">
       <div className="container-custom">
@@ -134,7 +162,7 @@ const ContactSection = () => {
                 Fill out the form below and we'll get back to you within 24 hours to discuss your legal needs.
               </p>
 
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">
@@ -198,8 +226,8 @@ const ContactSection = () => {
                   </label>
                 </div>
 
-                <Button className="w-full btn-primary">
-                  Send Message
+                <Button type="submit" className="w-full btn-primary" disabled={isSubmitting}>
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>
 
                 <p className="text-xs text-muted-foreground text-center">
