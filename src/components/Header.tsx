@@ -7,6 +7,14 @@ const Header = () => {
 
   const openContactModal = () => setIsContactModalOpen(true);
   const closeContactModal = () => setIsContactModalOpen(false);
+  
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return <header className="bg-white border-b border-border/50 sticky top-0 z-50">
       <div className="container-custom">
         <div className="flex items-center justify-between h-16">
@@ -18,7 +26,7 @@ const Header = () => {
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#home" className="text-foreground hover:text-primary transition-colors">Home</a>
+            <button onClick={scrollToAbout} className="text-foreground hover:text-primary transition-colors">Home</button>
             <a href="#about" className="text-muted-foreground hover:text-primary transition-colors">About</a>
             <a href="#services" className="text-muted-foreground hover:text-primary transition-colors">Services</a>
             <a href="#team" className="text-muted-foreground hover:text-primary transition-colors">Team</a>
